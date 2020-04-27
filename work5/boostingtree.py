@@ -1,9 +1,7 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from IPython.core import debugger
 from sklearn.datasets import load_iris
-from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 debug = debugger.Pdb().set_trace
@@ -13,7 +11,7 @@ debug = debugger.Pdb().set_trace
 # 数据集内包含 3 类共 150 条记录，每类各 50 个数据，
 # 每条记录都有 4 项特征：花萼长度、花萼宽度、花瓣长度、花瓣宽度，
 # 可以通过这4个特征预测鸢尾花卉属于（iris-setosa, iris-versicolour, iris-virginica）中的哪一品种。
-# 这里只取前100条记录，两项特征，两个类别。
+# 这里取60条记录，一项特征，两个类别。
 
 def create_data():
     iris = load_iris()
@@ -144,10 +142,10 @@ class BoostingTree(object):
         return right_num/len(y_test)
 
 
-boostinftree = BoostingTree(X_train,y_train,max_iteration = 5, min_error = 0.001)
-boostinftree.cacl_v_list(X_train,v_number=5)
-boostinftree.train(X_train,y_train)
-accuracy = boostinftree.predict(X_test,y_test)
+boostingtree = BoostingTree(X_train,y_train,max_iteration = 5, min_error = 0.001)
+boostingtree.cacl_v_list(X_train,v_number=5)
+boostingtree.train(X_train,y_train)
+accuracy = boostingtree.predict(X_test,y_test)
 print("测试正确率为：{}".format(accuracy))
 
 

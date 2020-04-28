@@ -10,6 +10,7 @@
 #第二列概率为：观测为白球的概率
 #Π = （0.2， 0.3， 0.5）T
 import numpy as np
+from path_show import path_show
 
 A = np.array([[0.5,0.1,0.4],[0.3,0.5,0.2],[0.2,0.2,0.6]])
 B = np.array([[0.5,0.5],[0.4,0.6],[0.7,0.3]])
@@ -66,4 +67,7 @@ class Viterbi(object):
 if __name__ == '__main__':
     viterbi = Viterbi(A,B,pi,O)
     i_star = viterbi.compute()
+    show = path_show(viterbi.T,viterbi.N,viterbi.delta,viterbi.i_star)
+    show.state_scatter()
+    show.show()
     print("the path is: {}".format(i_star))
